@@ -1,0 +1,6 @@
+{
+  "name": "Elvitigala Engineering",
+  "description": "Premium engineering, construction, architecture, and interior design portfolio with an interactive BOQ Submission and Admin quotation portal.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
