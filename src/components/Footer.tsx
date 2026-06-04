@@ -27,7 +27,7 @@ export default function Footer({ locale, setActiveTab }: FooterProps) {
           {/* Brand & Mission Statement */}
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
-              <div className="p-2 rounded bg-white-500 text-black">
+              <div className="p-2 rounded bg-white text-black">
                 <img
                 src="/logo01.png"
                 alt="Elvitigala Engineering Logo"

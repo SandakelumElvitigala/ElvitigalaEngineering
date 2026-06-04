@@ -199,6 +199,7 @@ export default function Header({
             </button>
 
             {/* Dark & Light Toggle */}
+            {/*
             <button
               onClick={toggleTheme}
               className="p-2 rounded-lg border border-zinc-200 dark:border-zinc-800 text-zinc-600 dark:text-zinc-300 hover:bg-zinc-50 dark:hover:bg-zinc-900 transition-all"
@@ -211,6 +212,7 @@ export default function Header({
                 <Sun className="h-4 w-4 text-amber-400" />
               )}
             </button>
+            */}
           </div>
 
           {/* Mobile Menu Icon */}
