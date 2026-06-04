@@ -6,6 +6,13 @@
 import { useState } from "react";
 import { BOQSubmission } from "../../types";
 import { db, supabase } from "../../utils/db";
+import {
+  reviewingEmail,
+  quotingEmail,
+  completedEmail,
+  declinedEmail,
+} from "../../utils/emailTemplates";
+import { sendEmail } from "../../utils/sendEmail";
 
 interface BOQsTabProps {
   boqs: BOQSubmission[];
@@ -34,6 +41,7 @@ export default function BOQsTab({ boqs, onRefreshData }: BOQsTabProps) {
   const [reviewing, setReviewing] = useState<BOQSubmission | null>(null);
   const [adminNote, setAdminNote] = useState("");
   const [quoteAmount, setQuoteAmount] = useState("");
+  const [quoteFile, setQuoteFile] = useState<File | null>(null);
 
   const handleDownloadFile = async () => {
     if (!reviewing?.storagePath) {
@@ -94,7 +102,6 @@ export default function BOQsTab({ boqs, onRefreshData }: BOQsTabProps) {
 
     const timestamp = new Date().toISOString();
     const noteText = NOTE_MAP[status] ?? `Status changed to ${status}.`;
-
     const logs = [
       ...reviewing.logs,
       { timestamp, action: `Status: ${status}`, note: noteText },
@@ -118,12 +125,52 @@ export default function BOQsTab({ boqs, onRefreshData }: BOQsTabProps) {
     }
 
     const ok = await db.updateBOQ(updated);
-    if (ok) {
-      setReviewing(updated);
-      onRefreshData();
+    if (!ok) return;
+
+    setReviewing(updated);
+    onRefreshData();
+
+    // ── Build email data ──────────────────────────────────────────────────────
+    const emailData = {
+      clientName: reviewing.clientName,
+      clientEmail: reviewing.clientEmail,
+      projectType: reviewing.projectType,
+      submittedAt: fmtDate(reviewing.submittedAt),
+      totalEstimate: updated.totalEstimate,
+      quoteUrl: updated.quoteUrl,
+      adminNote: adminNote || undefined,
+    };
+
+    if (status === "completed" && quoteFile) {
+      const path = `quotes/${reviewing.id}/${quoteFile.name}`;
+      const { error } = await supabase!.storage
+        .from("boq-files")
+        .upload(path, quoteFile, { upsert: true });
+      if (!error) {
+        const { data } = supabase!.storage.from("boq-files").getPublicUrl(path);
+        updated.quoteUrl = data.publicUrl;
+        emailData.quoteUrl = data.publicUrl;
+      }
+    }
+    // ── Send the right template ───────────────────────────────────────────────
+    try {
+      const templates = {
+        reviewing: reviewingEmail,
+        quoting: quotingEmail,
+        completed: completedEmail,
+        declined: declinedEmail,
+      };
+      const template = templates[status as keyof typeof templates];
+      if (template) {
+        const { subject, html } = template(emailData);
+        await sendEmail(reviewing.clientEmail, subject, html);
+      }
       alert(
         `Status updated to "${status}". Notification sent to ${reviewing.clientEmail}`,
       );
+    } catch (err) {
+      console.error("Email failed:", err);
+      alert(`Status updated, but email failed to send. Check logs.`);
     }
   };
 
@@ -339,6 +386,24 @@ export default function BOQsTab({ boqs, onRefreshData }: BOQsTabProps) {
                   value={quoteAmount}
                   onChange={(e) => setQuoteAmount(e.target.value)}
                 />
+              </div>
+              <div className="space-y-1.5">
+                <label className="font-bold text-zinc-700 dark:text-zinc-300 block">
+                  Attach Quotation PDF
+                </label>
+                <input
+                  type="file"
+                  accept=".pdf"
+                  onChange={(e) => setQuoteFile(e.target.files?.[0] ?? null)}
+                  className="w-full text-xs text-zinc-500 file:mr-3 file:py-1.5 file:px-3
+               file:rounded-lg file:border-0 file:text-xs file:font-bold
+               file:bg-emerald-500/10 file:text-emerald-600 cursor-pointer"
+                />
+                {quoteFile && (
+                  <p className="text-[10px] font-mono text-emerald-500">
+                    📎 {quoteFile.name}
+                  </p>
+                )}
               </div>
               <div className="space-y-1.5">
                 <label className="font-bold text-zinc-700 dark:text-zinc-300 block">
