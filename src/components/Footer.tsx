@@ -124,7 +124,7 @@ export default function Footer({ locale, setActiveTab }: FooterProps) {
               </li>
               <li className="flex items-center gap-2.5">
                 <Mail className="h-4.5 w-4.5 text-amber-500 shrink-0" />
-                <span>elvitigalaengineeringservices@gmail.com</span>
+                <span>info@elvitigalaengineers.com</span>
               </li>
             </ul>
           </div>

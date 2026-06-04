@@ -95,9 +95,9 @@ export default function ContactView({ locale, services = [] }: ContactViewProps)
         <div className="lg:col-span-5 space-y-8 flex flex-col justify-between" id="contact-coordinates">
           
           <div className="space-y-6">
-            <h2 className="text-zinc-900 dark:text-zinc-100 font-sans font-black text-xl">Headquarters Colombo</h2>
+            <h2 className="text-zinc-900 dark:text-zinc-100 font-sans font-black text-xl">Headquarters</h2>
             <p className="text-zinc-500 dark:text-zinc-400 text-sm leading-relaxed">
-              We coordinate our engineering consultancies, QS steel estimations, and heavy machinery fleets from our centralized Colombo Mawatha headquarters block.
+              We coordinate our engineering consultancies, QS steel estimations, and heavy machinery fleets from our headquarters.
             </p>
           </div>
 
@@ -109,7 +109,7 @@ export default function ContactView({ locale, services = [] }: ContactViewProps)
               </div>
               <div className="text-sm">
                 <h4 className="text-zinc-400 font-mono text-[9px] uppercase font-bold tracking-widest">Office Address</h4>
-                <p className="text-zinc-800 dark:text-zinc-200 font-semibold mt-1">No. 345, Elvitigala Mawatha, Colombo 05, Sri Lanka</p>
+                <p className="text-zinc-800 dark:text-zinc-200 font-semibold mt-1">No. 75/D, Balikawa rd, Pahala Kosgama, Kosgama, Sri Lanka</p>
               </div>
             </div>
 
@@ -119,7 +119,7 @@ export default function ContactView({ locale, services = [] }: ContactViewProps)
               </div>
               <div className="text-sm">
                 <h4 className="text-zinc-400 font-mono text-[9px] uppercase font-bold tracking-widest">Operational Hotline</h4>
-                <p className="text-zinc-800 dark:text-zinc-200 font-mono font-bold mt-1">+94 11 285 4120</p>
+                <p className="text-zinc-800 dark:text-zinc-200 font-mono font-bold mt-1">+94 71 108 960</p>
               </div>
             </div>
 
@@ -129,7 +129,7 @@ export default function ContactView({ locale, services = [] }: ContactViewProps)
               </div>
               <div className="text-sm">
                 <h4 className="text-zinc-400 font-mono text-[9px] uppercase font-bold tracking-widest">Tender Correspondence</h4>
-                <p className="text-zinc-800 dark:text-zinc-200 font-mono font-semibold mt-1 select-all">info@elvitigala.lk</p>
+                <p className="text-zinc-800 dark:text-zinc-200 font-mono font-semibold mt-1 select-all">info@elvitigalaengineers.com</p>
               </div>
             </div>
 
