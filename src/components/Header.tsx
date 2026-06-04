@@ -217,7 +217,7 @@ export default function Header({
 
           {/* Mobile Menu Icon */}
           <div className="flex items-center space-x-2 lg:hidden">
-            <button
+            {/*<button
               onClick={toggleTheme}
               className="p-2 rounded-lg border border-zinc-200 dark:border-zinc-800 text-zinc-600 dark:text-zinc-300 hover:bg-zinc-50 dark:hover:bg-zinc-900"
             >
@@ -226,7 +226,7 @@ export default function Header({
               ) : (
                 <Sun className="h-4.5 w-4.5" />
               )}
-            </button>
+            </button>*/}
             <button
               onClick={() => setLocale(locale === "en" ? "si" : "en")}
               className="p-2 rounded-lg border border-zinc-200 dark:border-zinc-800 text-zinc-600 dark:text-zinc-300 text-xs font-bold"
