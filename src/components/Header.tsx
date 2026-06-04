@@ -271,7 +271,7 @@ export default function Header({
             </button>
           ))}
           <div className="pt-4 border-t border-zinc-200 dark:border-zinc-800 flex flex-col gap-2">
-            <button
+            {/*<button
               onClick={() => {
                 setActiveTab("diagnostics");
                 setMobileOpen(false);
@@ -280,9 +280,9 @@ export default function Header({
             >
               <Terminal className="h-4 w-4" />
               RUN DIAGNOSTIC TESTS
-            </button>
+            </button>*/}
             <div className="text-center font-mono text-[10px] text-zinc-400 pt-2">
-              Elvitigala Engineering v1.2 • Standard {currentYr} Prototype
+              Elvitigala Engineering v1.2 • Standard {currentYr} <br /> Powered by Elvitech Solutions
             </div>
           </div>
         </div>
