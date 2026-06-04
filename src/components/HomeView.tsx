@@ -107,15 +107,15 @@ export default function HomeView({
               {/* Live Statistics Block */}
               <div className="grid grid-cols-3 gap-6 pt-6 border-t border-zinc-200 dark:border-zinc-800 max-w-lg" id="hero-stats">
                 <div className="space-y-1">
-                  <div className="font-sans font-black text-3xl sm:text-4xl text-amber-500">28+</div>
+                  <div className="font-sans font-black text-3xl sm:text-4xl text-amber-500">25+</div>
                   <div className="text-xs font-mono uppercase tracking-wider text-zinc-500 dark:text-zinc-400">{t.homeStatsExp}</div>
                 </div>
                 <div className="space-y-1">
-                  <div className="font-sans font-black text-3xl sm:text-4xl text-amber-500">184+</div>
+                  <div className="font-sans font-black text-3xl sm:text-4xl text-amber-500">100+</div>
                   <div className="text-xs font-mono uppercase tracking-wider text-zinc-500 dark:text-zinc-400">{t.homeStatsProjects}</div>
                 </div>
                 <div className="space-y-1">
-                  <div className="font-sans font-black text-3xl sm:text-4xl text-amber-500">30+</div>
+                  <div className="font-sans font-black text-3xl sm:text-4xl text-amber-500">10+</div>
                   <div className="text-xs font-mono uppercase tracking-wider text-zinc-500 dark:text-zinc-400">{t.homeStatsClients}</div>
                 </div>
               </div>
