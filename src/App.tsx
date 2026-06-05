@@ -35,6 +35,7 @@ import { Milestone as MilestoneIcon } from "lucide-react";
 export const EXCLUSIVE_ADMIN_EMAILS = [
   "consoletirex@gmail.com",
   "elvitigalaengineeringservices@gmail.com",
+  "pramudithaelvitigala419@gmail.com",
 ];
 
 export default function App() {
